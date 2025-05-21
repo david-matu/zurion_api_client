@@ -1,0 +1,91 @@
+	<div class="bg-light d-none card border-danger p-2 font-weight-bold" id="feedback-card">${feedback}</div>
+	<div class="card bg-primary text-white rounded p-2 font-weight-bold fw-bolder" style="margin-bottom: -4px;">
+          	 	<strong class="d-flex justify-content-between"><span>Update Contact: ${Contact.fullName }</span> 
+          	 	<a class="btn btn-sm btn-light text-primary font-weight-bolder fw-bolder" href="${pageContext.request.contextPath}/sudo/listing/contact">View All</a></strong>
+          	 </div>
+	<form class="form card shadow shadow-lg p-4" id="Contact-form" method="POST" action="${pageContext.request.contextPath}/sudo/update/contact/${Contact.contactId}">
+		<div class=form-group>
+			<label for="contactId" class="font-weight-bold">CONTACT ID</label>
+			<input type="number" name="contactId" id="contactId" class="form-control" value="${Contact.contactId}" min="" required/>
+		</div>
+		<div class=form-group>
+			<label for="fullName" class="font-weight-bold">FULL NAME</label>
+			<input type="text" name="fullName" id="fullName" class="form-control" value="${Contact.fullName}" required/>
+		</div>
+		<div class=form-group>
+			<label for="phone" class="font-weight-bold">PHONE</label>
+			<input type="text" name="phone" id="phone" class="form-control" value="${Contact.phone}" required/>
+		</div>
+		<div class=form-group>
+			<label for="email" class="font-weight-bold">EMAIL</label>
+			<input type="text" name="email" id="email" class="form-control" value="${Contact.email}" required/>
+		</div>
+		<div class=form-group>
+			<label for="county" class="font-weight-bold">COUNTY</label>
+			<input type="text" name="county" id="county" class="form-control" value="${Contact.county}" required/>
+		</div>
+		<div class=form-group>
+			<label for="idNumber" class="font-weight-bold">ID NUMBER</label>
+			<input type="number" name="idNumber" id="idNumber" class="form-control" value="${Contact.idNumber}" min="" required/>
+		</div>
+		<div class=form-group>
+			<label for="dateOfBirth" class="font-weight-bold">DATE OF BIRTH</label>
+			<input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control" value="${Contact.dateOfBirth}" required/>
+		</div>
+
+		<div class=form-group>
+			<label for="gender" class="font-weight-bold">GENDER</label>
+			<input type="text" name="gender" id="gender" class="form-control" value="${Contact.gender}" required/>
+		</div>
+		<div class=form-group>
+			<label for="dateAdded" class="font-weight-bold">DATE ADDED</label>
+			<input type="date" name="dateAdded" id="dateAdded" class="form-control" value="${Contact.dateAdded}" required/>
+		</div>
+
+		<div class=form-group>
+			<label for="comments" class="font-weight-bold">COMMENTS</label>
+			<input type="text" name="comments" id="comments" class="form-control" value="${Contact.comments}" required/>
+		</div>
+		<div class=form-group>
+			<label for="status" class="font-weight-bold">STATUS</label>
+			<input type="text" name="status" id="status" class="form-control" value="${Contact.status}" required/>
+		</div>
+		<input type="hidden" id="nextURL" name="nextURL" value="${pageContext.request.contextPath}/sudo/update/contact/${Contact.contactId}"/>
+		<button class="btn btn-md btn-primary my-2 font-weight-bold fw-bolder" id="btn-register" type="submit">UPDATE</button>
+	</form>
+
+
+<script>
+	$(document).ready(function() {
+		$("#Contact-form").on("submit", function(e){
+			e.preventDefault();
+			$("#feedback-card").removeClass("d-none").empty().html("<strong>Sending update request to server</strong>");		//Animate loading... here
+			var formURL = $("#Contact-form").attr("action")
+
+		var postOnce = $.post(formURL,
+			{
+				contactId : $("#contactId").val(),
+				fullName : $("#fullName").val(),
+				phone : $("#phone").val(),
+				email : $("#email").val(),
+				county : $("#county").val(),
+				idNumber : $("#idNumber").val(),
+				dateOfBirth : $("#dateOfBirth").val(),
+				gender : $("#gender").val(),
+				dateAdded : $("#dateAdded").val(),
+				comments : $("#comments").val(),
+				status : $("#status").val()
+			},
+			function(data) {
+			if(data == 'UPDATE_FAILED'){
+				scrollTopFunc();
+				$('#feedback-card').empty().html("<strong>An error occurred</strong>")
+			}
+			else if(data == 'UPDATE_OKAY'){
+				$('#feedback-card').empty().html("<strong class='text-success'>Successfully updated!</strong>")
+				$(location).attr('href', $('#nextURL').val());
+			}
+		});
+	});
+	});
+</script>

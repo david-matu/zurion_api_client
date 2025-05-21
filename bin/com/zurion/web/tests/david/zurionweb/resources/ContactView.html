@@ -1,0 +1,56 @@
+<div class="card shadow shadow-lg border-success" id="profile-overview">
+	<div class="card-header bg-light">
+		<h5 class="card-title">Contact: ${Contact.contactId}</h5>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">CONTACT ID</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.contactId}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">FULL NAME</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.fullName}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">PHONE</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.phone}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">EMAIL</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.email}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">COUNTY</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.county}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">ID NUMBER</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.idNumber}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">DATE OF BIRTH</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.dateOfBirth}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">GENDER</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.gender}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">DATE ADDED</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.dateAdded}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">COMMENTS</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.comments}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">STATUS</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${Contact.status}</div>
+		</div>
+	</div>
+	<div class="card-footer">
+				<a class="btn btn-sm btn-success" href="${pageContext.request.contextPath}/sudo/listing/contact">All</a>
+				<a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/sudo/update/contact/${Contact.contactId }">Edit</a>
+				<a class="btn btn-sm btn-danger btn-delete" href="${pageContext.request.contextPath}/sudo/contact/delete/${Contact.contactId }" title="Delete" data-filename="${Contact.contactId }" data-eid="${Contact.contactId }">Remove</a>
+	</div>
+</div>
