@@ -8,9 +8,15 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             
-            <form class="d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" method="POST" action="${pageContext.request.contextPath}/search">
+            <form class="d-md-inline-block form-inline d-flex ms-auto me-0 me-md-3 my-2 my-md-0" method="POST" action="${pageContext.request.contextPath}/search">
                 <div class="input-group">
-                    <input title="Search by hash of the phone or by masked name, masked phone number" class="form-control" type="text" placeholder="Search contact..." aria-label="Search contact..." aria-describedby="btnNavbarSearch" />
+                	<div class="input-group-prepend" style="margin-right: -12px">
+                		<select name="searchType" class="form-control form-select">
+		                	<option value="company">Company</option>
+		                	<option value="individual" selected>Individual</option>
+		                </select>
+                	</div>
+                    <input name="searchTerm" title="Search by hash of the phone or by masked name, masked phone number" class="form-control" type="text" placeholder="Search contact..." aria-label="Search contact..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" type="submit" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
                 </div>
             </form>
