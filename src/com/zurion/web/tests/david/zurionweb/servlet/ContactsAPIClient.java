@@ -92,7 +92,11 @@ public class ContactsAPIClient extends HttpServlet {
             		dispatcher.forward(request, response);
                 } else if(searchType.equalsIgnoreCase("individual")) {
                 	request.setAttribute("SearchResultType", "individual");
-                	request.setAttribute("AdvancedContact", gson.fromJson(responseBody, AdvancedContact.class)); //obm.convertValue(responseBody, AdvancedContact.class));
+                	
+                	AdvancedContact c = gson.fromJson(responseBody, AdvancedContact.class);
+                	System.out.println("Converted contact: " + c.toString());
+                	
+                	request.setAttribute("AdvancedContact", c); //obm.convertValue(responseBody, AdvancedContact.class));
 
             		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/SEARCH_RESULTS.jsp");
             		dispatcher.forward(request, response);
@@ -100,6 +104,9 @@ public class ContactsAPIClient extends HttpServlet {
                 
             } else {
                 System.err.println("Error: " + apiResponse.code() + " - " + apiResponse.message());
+                
+                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/SEARCH_RESULTS.jsp");
+        		dispatcher.forward(request, response);
             }
         } catch (IOException e) {
             e.printStackTrace();

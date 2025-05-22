@@ -47,7 +47,7 @@
                         <div class="row">
                             <div class="col-12">
                             	<c:choose>
-                                	<c:when test="${SearchResultTye == 'individual' }">
+                                	<c:when test="${SearchResultType == 'individual' }">
                                 		<c:choose>
                                 			<c:when test="${AdvancedContact != null }">
                                 				<div class="card shadow shadow-lg border-success" id="profile-overview">
@@ -120,6 +120,9 @@
 												</div>
                                 			</c:when>
                                 			
+                                			<c:when test="${AdvancedContact == null }">
+                                				The contact cannot be displayed right now
+                                			</c:when>
                                 			
                                 			<c:otherwise>
                                 				<p>There were no results found</p>
@@ -173,6 +176,14 @@
 													</div>
 		                                	</c:when>
                                 </c:choose>    
+                            </div>
+                            
+                            <div class="col-12">
+                            	<c:choose>
+	                            	<c:when test="${SearchResultType == null || SearchResultType == '' }">
+	                            		<p>No results found</p>
+	                            	</c:when>
+	                            </c:choose>
                             </div>
                         </div>
                         

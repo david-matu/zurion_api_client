@@ -1,11 +1,14 @@
-# Zurion Technologies Web Test
-### By David May 5, 2024
+# Zurion Technologies
+### Web API Client
+> By David May 21, 2025
 ____
 
 ### About
-This is a Contact Registry System that stores and manages contacts. 
+This web application provides __Search__ feature where the user can seach for an individual contact by specify either the _phone hash_ 
+or a string combination of _masked name_ and _masked phone number_ each separated by a comma.
 
-Additionally, it provides powerful and intuitive visualizations for the distributions of contacts based on their various characteristics.
+
+The web application effectively implements the Search API defined by the other web application [zurion_api_server](https://github.com/david-matu/zurion_api_server)
 
 ### Technical Specs
 This is a Maven-based Java web application project utilizing JDBC, Servlets and JSPs, with the JSPs employing Bootstrap 5 CSS 
@@ -30,6 +33,10 @@ mvn clean install  #install maven using yum install maven if not already install
 
 
 2. Initialize the database with the following script
+
+This web application uses the former database schema, but we can cover it here. 
+
+Kindly note that the contacts managed from this app are different from what the API server is offering / managing. 
 
 Find it [here](./zurion_init_script.sql)
 
@@ -81,6 +88,12 @@ Use
 
 
 #### Screenshots
+> Search Feature
+![Search form](/screenshots/Zurion_Client_Search_Individual.png "Search Form, conventionally placed on the navbar")
+![Search Result](/screenshots/Zurion_Client_Search_Results_Individual.png "Search results for phone hash or masked name and masked phone")
+![Search Result](/screenshots/Zurion_Client_Search_Results_Company.png "Search results for a specified company")
+
+> Former
 ###### Dashboard, with all intuitive graphs and recently added contacts
 ![Dashboard](/screenshots/A.png "Dashboard, with all intuitive graphs and recently added contacts")
 ###### Dashboard with Pie Charts and recently added contacts
